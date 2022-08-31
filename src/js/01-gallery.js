@@ -1,9 +1,10 @@
 // Add imports above this line
 import { galleryItems } from './gallery-items';
 // Change code below this line
-import SimpleLightbox from "../node_modules/simplelightbox/dist/simple-lightbox";
-
+import SimpleLightbox from "../node_modules/simplelightbox/dist/simple-lightbox.esm";
+// new add
 const imgGalleryCard = document.querySelector(`.gallery`);
+
 const imgGallery = onCreateImgCard(galleryItems);
 
 // Create card
