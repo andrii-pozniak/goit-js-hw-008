@@ -1,43 +1,50 @@
 
 const form = document.querySelector(`.feedback-form`);
 const textarea = document.querySelector(`textarea`);
-// const buttonSubmit = document.querySelector(`button`);
+const input = document.querySelector(`input`);
 
-// console.log(form)
-// console.log(textarea)
-// console.log(buttonSubmit)
+let throttle = require('lodash.throttle');
+STORAGE_KEY = `feedback-form-state`;
+
 wordTextarea();
+wordForm();
 
 form.addEventListener(`submit`, onButton);
-textarea.addEventListener(`input`, onTextareaWord);
-// buttonSubmit.addEventListener(`submit`, onButton);
 
-// function onFormWord(evn) {
-  
-//   const valueForm = evn.target.value;
-// //   localStorage.setItem(`feedback-form-state`, valueForm)
-// console.log(valueForm)  
+
+form.addEventListener(`input`,  throttle(onFormWord, 500));
+
+const formData = {};
+
+function onFormWord(evn) {
+    formData[evn.target.name] = evn.target.value;
  
-// }
+    localStorage.setItem(STORAGE_KEY, JSON.stringify (formData))
 
-function onTextareaWord(evn) {
-    // evn.preventDefault();  
-const valueTextarea = evn.target.value;
-localStorage.setItem(`feedback-form-state`, valueTextarea)
-
-console.log(valueTextarea)  
 }
 
 function onButton(evn) {
     evn.target.reset();
-    localStorage.removeItem(`feedback-form-state`);
-}
+    localStorage.removeItem(STORAGE_KEY);
+};
 
 function wordTextarea(evn) {
-    const takeMessage = localStorage.getItem(`feedback-form-state`);
+    const takeMessage = localStorage.getItem(STORAGE_KEY);    
     
     if (takeMessage) {
-        textarea.value = takeMessage;
+        const messageJson = JSON.parse(takeMessage);
+        textarea.value = messageJson.message;
+        console.log(messageJson.message)
+
+    }   
+};
+
+function wordForm(evn) {
+    const takeEmail = localStorage.getItem(STORAGE_KEY);
+    
+    if (takeEmail) {
+        const emailJson = JSON.parse(takeEmail);
+        input.value = emailJson.email;
+        console.log(emailJson.email)
     }
-   
 }
