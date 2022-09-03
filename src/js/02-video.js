@@ -11,8 +11,7 @@ const onSeeTime = document.querySelector(`#vimeo-player`);
         player.on(`timeupdate`, throttle(onTimePlay, 1000));
 
         function onTimePlay(timeupdate) {
-            console.log(timeupdate)
-          
+            console.log(timeupdate)          
             
              localStorage.setItem("videoplayer-current-time", timeupdate.seconds);
                    
