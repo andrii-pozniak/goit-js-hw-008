@@ -1,7 +1,7 @@
 // Add imports above this line
 import { galleryItems } from './gallery-items';
 // Change code below this line
-import SimpleLightbox from "../node_modules/simplelightbox/dist/simple-lightbox.esm";
+import SimpleLightbox from "simplelightbox/dist/simple-lightbox.esm";
 import "simplelightbox/dist/simple-lightbox.min.css";
 
 
@@ -16,7 +16,7 @@ imgGalleryCard.insertAdjacentHTML("beforeend", imgGallery);
 function onCreateImgCard(galleryItems) {
     return galleryItems.map(({preview, original, description}) => {
        return `
-       <li class="gallery__item">
+       <div class="gallery__item">
         <a class="gallery__link" href="${original}">
           <img class="gallery__image"
           src="${preview}"
@@ -24,7 +24,7 @@ function onCreateImgCard(galleryItems) {
           alt="${description}"
           />
      </a>
-    </li>
+    </div>
        ` ;       
     }).join("");
     
