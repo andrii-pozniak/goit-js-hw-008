@@ -4,7 +4,7 @@ const textarea = document.querySelector(`textarea`);
 const input = document.querySelector(`input`);
 
 let throttle = require('lodash.throttle');
-STORAGE_KEY = `feedback-form-state`;
+const STORAGE_KEY = `feedback-form-state`;
 
 wordTextarea();
 wordForm();
