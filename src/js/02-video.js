@@ -8,7 +8,7 @@ const onSeeTime = document.querySelector(`#vimeo-player`);
  const iframe = document.querySelector('iframe');
         const player = new Player(iframe);
 
-        player.on(`timeupdate`, throttle(onTimePlay, 1000));
+        player.on('timeupdate', throttle(onTimePlay, 1000));
 
         function onTimePlay(timeupdate) {
             console.log(timeupdate)          
