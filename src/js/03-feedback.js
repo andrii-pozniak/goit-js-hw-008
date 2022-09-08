@@ -24,6 +24,7 @@ function onFormWord(evn) {
 }
 
 function onButton(evn) {
+    evn.preventDefault();
     evn.target.reset();
     localStorage.removeItem(STORAGE_KEY);
 };
@@ -33,7 +34,7 @@ function wordTextarea(evn) {
     
     if (takeMessage) {
         const messageJson = JSON.parse(takeMessage);
-        textarea.value = messageJson.message;
+        textarea.value = messageJson.message || '';
         console.log(messageJson.message)
 
     }   
@@ -44,7 +45,7 @@ function wordForm(evn) {
     
     if (takeEmail) {
         const emailJson = JSON.parse(takeEmail);
-        input.value = emailJson.email;
+        input.value = emailJson.email || '';
         console.log(emailJson.email)
     }
 }
