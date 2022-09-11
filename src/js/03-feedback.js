@@ -27,6 +27,7 @@ function onButton(evn) {
     evn.preventDefault();
     evn.target.reset();
     localStorage.removeItem(STORAGE_KEY);
+    console.log(formData)
 };
 
 function wordTextarea(evn) {
