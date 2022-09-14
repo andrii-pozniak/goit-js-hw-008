@@ -14,20 +14,22 @@ form.addEventListener(`submit`, onButton);
 
 form.addEventListener(`input`,  throttle(onFormWord, 500));
 
-const formData = {};
+let formData = {};
 
 function onFormWord(evn) {
     formData[evn.target.name] = evn.target.value;
  
     localStorage.setItem(STORAGE_KEY, JSON.stringify (formData))
-console.log(evn)
 }
 
 function onButton(evn) {
     evn.preventDefault();
+    console.log( JSON.parse(localStorage.getItem(STORAGE_KEY)))
+
     evn.currentTarget.reset();
+   
     localStorage.removeItem(STORAGE_KEY);
-    console.log(formData)
+    formData = {};
 };
 
 function wordTextarea(evn) {
@@ -35,10 +37,10 @@ function wordTextarea(evn) {
     
     if (takeMessage) {
         const messageJson = JSON.parse(takeMessage);
-        textarea.value = messageJson.message || '';
+        textarea.value = messageJson.message;
        
-
     }   
+    textarea.value = '';
 };
 
 function wordForm(evn) {
@@ -46,7 +48,8 @@ function wordForm(evn) {
     
     if (takeEmail) {
         const emailJson = JSON.parse(takeEmail);
-        input.value = emailJson.email || '';
+        input.value = emailJson.email;
       
     }
+    input.value = '';
 }
