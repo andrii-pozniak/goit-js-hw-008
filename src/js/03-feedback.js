@@ -20,12 +20,12 @@ function onFormWord(evn) {
     formData[evn.target.name] = evn.target.value;
  
     localStorage.setItem(STORAGE_KEY, JSON.stringify (formData))
-
+console.log(evn)
 }
 
 function onButton(evn) {
     evn.preventDefault();
-    evn.target.reset();
+    evn.currentTarget.reset();
     localStorage.removeItem(STORAGE_KEY);
     console.log(formData)
 };
@@ -36,7 +36,7 @@ function wordTextarea(evn) {
     if (takeMessage) {
         const messageJson = JSON.parse(takeMessage);
         textarea.value = messageJson.message || '';
-        console.log(messageJson.message)
+       
 
     }   
 };
@@ -47,6 +47,6 @@ function wordForm(evn) {
     if (takeEmail) {
         const emailJson = JSON.parse(takeEmail);
         input.value = emailJson.email || '';
-        console.log(emailJson.email)
+      
     }
 }
