@@ -37,10 +37,10 @@ function wordTextarea(evn) {
     
     if (takeMessage) {
         const messageJson = JSON.parse(takeMessage);
-        textarea.value = messageJson.message;
+        textarea.value = messageJson.message || '';
        
     }   
-    textarea.value = '';
+    
 };
 
 function wordForm(evn) {
@@ -48,8 +48,8 @@ function wordForm(evn) {
     
     if (takeEmail) {
         const emailJson = JSON.parse(takeEmail);
-        input.value = emailJson.email;
+        input.value = emailJson.email || '';
       
     }
-    input.value = '';
+  
 }
